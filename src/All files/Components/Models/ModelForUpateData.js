@@ -1,7 +1,7 @@
 
 import { toast } from 'react-hot-toast';
 
-const ModelForUpateData = ({userData,refetch}) => {
+const ModelForUpateData = ({userData,setUserdata,refetch}) => {
     
    
     const handleSubmit =(event)=>{
@@ -29,11 +29,13 @@ const ModelForUpateData = ({userData,refetch}) => {
             toast.success('User Updated')
             refetch()
             form.reset()
+           setUserdata('')
         }
-        console.log(data)
+       
     })
+    
+}
 
-    }
     return (
         <div className='bg-gray-400'>
 

@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { BiEditAlt } from 'react-icons/bi'
 import { FaHeart } from 'react-icons/fa'
@@ -76,7 +76,13 @@ const FacebookLoginPage = () => {
             method: "PUT"
         })
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => {
+                if(data.modifiedCount){
+                    toast.success('SUccessfully added data in Home Page')
+                }
+                console.log(data)
+               
+            })
 
     }
 
@@ -105,6 +111,7 @@ const FacebookLoginPage = () => {
                     </div>
 
                     <ModelForUpateData
+                    setUserdata={setUserdata}
                         refetch={refetch}
                         userData={userData}
                     >
